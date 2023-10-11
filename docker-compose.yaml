@@ -1,0 +1,37 @@
+version: "3"
+services:
+  mysql-container:
+    image: mysql:8.0.32
+    platform: linux/arm64
+    networks:
+      - project1 # wordpress000net1 네트워크 연결
+    volumes:
+      - mysqlvol:/var/lib/mysql # MySQL 데이터 저장을 위한 볼륨 마운트
+    restart: always # 컨테이너 재시작 설정
+    environment:
+      MYSQL_ROOT_PASSWORD: rootroot
+      MYSQL_DATABASE: cloud_native
+      MYSQL_USER: jeonghyeon
+      MYSQL_PASSWORD: password
+    ports:
+      - 3306:3306
+  spring_server:
+    networks:
+      - project1
+    depends_on:
+      - mysql-container
+    image: toolkithi/my-spring:latest
+    ports:
+      - 8080:8080
+    restart: always
+    environment:
+      DB_USERNAME: jeonghyeon
+      DB_HOST: mysql-container
+      DB_PASSWORD: password
+      DB_NAME: cloud_native
+      PORT: 8080
+      DB_PORT: 3306
+networks:
+  project1:
+volumes:
+  mysqlvol:
