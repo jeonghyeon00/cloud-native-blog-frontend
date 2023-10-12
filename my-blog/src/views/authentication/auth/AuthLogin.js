@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Box,
     Typography,
@@ -9,10 +9,16 @@ import {
     Checkbox
 } from '@mui/material';
 import { Link } from 'react-router-dom';
+import axios from '../../../api/api';
 
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField';
 
-const AuthLogin = ({ title, subtitle, subtext }) => (
+const AuthLogin = ({ title, subtitle, subtext }) => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    console.log(email)
+    console.log(password);
+    return (
     <>
         {title ? (
             <Typography fontWeight="700" variant="h2" mb={1}>
@@ -21,18 +27,22 @@ const AuthLogin = ({ title, subtitle, subtext }) => (
         ) : null}
 
         {subtext}
-
+        <form onSubmit={(e) =>{
+            e.preventDefault();
+            alert('complete')}}>
         <Stack>
-            <Box>
-                <Typography variant="subtitle1"
-                    fontWeight={600} component="label" htmlFor='username' mb="5px">Username</Typography>
-                <CustomTextField id="username" variant="outlined" fullWidth />
-            </Box>
-            <Box mt="25px">
-                <Typography variant="subtitle1"
-                    fontWeight={600} component="label" htmlFor='password' mb="5px" >Password</Typography>
-                <CustomTextField id="password" type="password" variant="outlined" fullWidth />
-            </Box>
+            
+                <Box>
+                    <Typography variant="subtitle1"
+                        fontWeight={600} component="label" htmlFor='username' mb="5px">Username</Typography>
+                    <CustomTextField onChange={(e) => setEmail(e.target.value)} id="username" variant="outlined" fullWidth />
+                </Box>
+                <Box mt="25px">
+                    <Typography variant="subtitle1"
+                        fontWeight={600} component="label" htmlFor='password' mb="5px" >Password</Typography>
+                    <CustomTextField id="password" type="password" variant="outlined" onChange={(e)=> setPassword(e.target.value)} fullWidth />
+                </Box>
+            
             <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
                 <FormGroup>
                     <FormControlLabel
@@ -59,15 +69,13 @@ const AuthLogin = ({ title, subtitle, subtext }) => (
                 variant="contained"
                 size="large"
                 fullWidth
-                component={Link}
-                to="/"
                 type="submit"
             >
                 Sign In
             </Button>
         </Box>
-        {subtitle}
+        {subtitle}</form>
     </>
-);
+)};
 
 export default AuthLogin;
