@@ -6,35 +6,66 @@ import CustomTextField from '../../../components/forms/theme-elements/CustomText
 import { Stack } from '@mui/system';
 
 const AuthRegister = ({ title, subtitle, subtext }) => (
-    <>
-        {title ? (
-            <Typography fontWeight="700" variant="h2" mb={1}>
-                {title}
-            </Typography>
-        ) : null}
+  <>
+    {title ? (
+      <Typography fontWeight="700" variant="h2" mb={1}>
+        {title}
+      </Typography>
+    ) : null}
 
-        {subtext}
+    {subtext}
+    <form>
+      <Box>
+        <Stack mb={3}>
+          <Typography
+            variant="subtitle1"
+            fontWeight={600}
+            component="label"
+            htmlFor="name"
+            mb="5px"
+          >
+            이름
+          </Typography>
+          <CustomTextField id="name" variant="outlined" fullWidth />
 
-        <Box>
-            <Stack mb={3}>
-                <Typography variant="subtitle1"
-                    fontWeight={600} component="label" htmlFor='name' mb="5px">Name</Typography>
-                <CustomTextField id="name" variant="outlined" fullWidth />
+          <Typography
+            variant="subtitle1"
+            fontWeight={600}
+            component="label"
+            htmlFor="ID"
+            mb="5px"
+            mt="25px"
+          >
+            아이디
+          </Typography>
+          <CustomTextField id="ID" variant="outlined" fullWidth />
 
-                <Typography variant="subtitle1"
-                    fontWeight={600} component="label" htmlFor='email' mb="5px" mt="25px">Email Address</Typography>
-                <CustomTextField id="email" variant="outlined" fullWidth />
-
-                <Typography variant="subtitle1"
-                    fontWeight={600} component="label" htmlFor='password' mb="5px" mt="25px">Password</Typography>
-                <CustomTextField id="password" variant="outlined" fullWidth />
-            </Stack>
-            <Button color="primary" variant="contained" size="large" fullWidth component={Link} to="/auth/login">
-                Sign Up
-            </Button>
-        </Box>
-        {subtitle}
-    </>
+          <Typography
+            variant="subtitle1"
+            fontWeight={600}
+            component="label"
+            htmlFor="password"
+            mb="5px"
+            mt="25px"
+          >
+            비밀번호
+          </Typography>
+          <CustomTextField id="password" variant="outlined" fullWidth />
+        </Stack>
+        <Button
+          color="primary"
+          variant="contained"
+          size="large"
+          fullWidth
+          component={Link}
+          to="/auth/login"
+        >
+          회원가입
+        </Button>
+      </Box>
+    </form>
+    {subtitle}
+  </>
 );
 
 export default AuthRegister;

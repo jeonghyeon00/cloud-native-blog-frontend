@@ -15,7 +15,9 @@ const ServerNumber = () => {
 
   return (
     <DashboardCard title="Load Balancing Server">
-      <div>From Server {data.serverNumber}</div>
+      <div>
+        From Server <b>{data.serverNumber}</b>
+      </div>
     </DashboardCard>
   );
 };

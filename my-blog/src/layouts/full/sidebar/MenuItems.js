@@ -44,13 +44,13 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: 'Login',
+    title: '로그인',
     icon: IconLogin,
     href: '/auth/login',
   },
   {
     id: uniqueId(),
-    title: 'Register',
+    title: '회원가입',
     icon: IconUserPlus,
     href: '/auth/register',
   },

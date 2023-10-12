@@ -4,11 +4,9 @@ import { Grid, Box, Card, Stack, Typography } from '@mui/material';
 
 // components
 import PageContainer from 'src/components/container/PageContainer';
-import Logo from 'src/layouts/full/shared/logo/Logo';
 import AuthLogin from './auth/AuthLogin';
 
 const Login2 = () => {
-  
   return (
     <PageContainer title="Login" description="this is Login page">
       <Box
@@ -38,19 +36,22 @@ const Login2 = () => {
             alignItems="center"
           >
             <Card elevation={9} sx={{ p: 4, zIndex: 1, width: '100%', maxWidth: '500px' }}>
-              <Box display="flex" alignItems="center" justifyContent="center">
-                <Logo />
-              </Box>
               <AuthLogin
                 subtext={
-                  <Typography variant="subtitle1" textAlign="center" color="textSecondary" mb={1}>
-                    Your Social Campaigns
+                  <Typography
+                    variant="subtitle1"
+                    textAlign="center"
+                    color="textSecondary"
+                    mb={1}
+                    fontSize={'30px'}
+                  >
+                    로그인
                   </Typography>
                 }
                 subtitle={
                   <Stack direction="row" spacing={1} justifyContent="center" mt={3}>
                     <Typography color="textSecondary" variant="h6" fontWeight="500">
-                      New to Modernize?
+                      계정이 없다면?
                     </Typography>
                     <Typography
                       component={Link}
@@ -61,7 +62,7 @@ const Login2 = () => {
                         color: 'primary.main',
                       }}
                     >
-                      Create an account
+                      계정 새로 만들기
                     </Typography>
                   </Stack>
                 }

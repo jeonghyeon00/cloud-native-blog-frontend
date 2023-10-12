@@ -4,12 +4,10 @@ import PageContainer from 'src/components/container/PageContainer';
 
 // components
 import MyInformation from './components/MyInformation';
-import YearlyBreakup from './components/YearlyBreakup';
-import RecentTransactions from './components/RecentTransactions';
-import ProductPerformance from './components/ProductPerformance';
 import Blog from './components/Blog';
-import MonthlyEarnings from './components/MonthlyEarnings';
 import ServerNumber from './components/ServerNumber';
+import ProjectInformation from './components/ProjectInformation';
+import MyCareer from './components/MyCareer';
 
 const Dashboard = () => {
   return (
@@ -19,24 +17,25 @@ const Dashboard = () => {
           <Grid item xs={12} lg={4}>
             <ServerNumber />
           </Grid>
+          <Grid item xs={12} lg={4}>
+            <ProjectInformation />
+          </Grid>
+
           <Grid item xs={8}>
             <MyInformation />
           </Grid>
           <Grid item xs={12} lg={4}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
+            {/* <Grid container spacing={3}> */}
+            {/* <Grid item xs={12}>
                 <YearlyBreakup />
-              </Grid>
-              <Grid item xs={12}>
-                <MonthlyEarnings />
-              </Grid>
-            </Grid>
+              </Grid> */}
+            {/* </Grid> */}
           </Grid>
-          <Grid item xs={12} lg={4}>
+          {/* <Grid item xs={12} lg={4}>
             <RecentTransactions />
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} lg={8}>
-            <ProductPerformance />
+            <MyCareer />
           </Grid>
           <Grid item xs={12}>
             <Blog />
