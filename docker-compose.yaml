@@ -32,6 +32,7 @@ services:
       PORT: 8080
       DB_PORT: 3306
       SERVER_NUMBER: 1
+      JWT_SECRET: dpoasjkopwkqop32j1p3oj21pjpsaojdsapojopdjsdsadsa81203podjas0809s09
   spring_server2:
     networks:
       - project1-network
@@ -49,6 +50,7 @@ services:
       PORT: 8081
       DB_PORT: 3306
       SERVER_NUMBER: 2
+      JWT_SECRET: dpoasjkopwkqop32j1p3oj21pjpsaojdsapojopdjsdsadsa81203podjas0809s09
   proxy:
     networks:
       - project1-network

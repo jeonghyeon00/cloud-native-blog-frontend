@@ -1,6 +1,8 @@
 package com.jh.my.blog.server.global
 
+import com.jh.my.blog.server.entity.Career
 import com.jh.my.blog.server.entity.Information
+import com.jh.my.blog.server.repository.CareerRepository
 import com.jh.my.blog.server.repository.InformationRepository
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
@@ -14,6 +16,7 @@ import java.time.LocalDate
 class InitDataInserter(
     private val jdbcTemplate: JdbcTemplate,
     private val informationRepository: InformationRepository,
+    private val careerRepository: CareerRepository,
 ) {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
@@ -38,6 +41,8 @@ class InitDataInserter(
                 "안녕하세요 새로운 기술을 배우며 성장하고 싶은 백엔드 개발자 송정현이라고 합니다.",
             ),
         )
+        careerRepository.save(Career("아온 스튜디오", "Backend Developer", "2022.03 ~ 2023.03", null, "primary.main"))
+        careerRepository.save(Career("온아웃", "Backend Developer", "2022.03 ~ 2023.03", "https://corp.on-out.com/", "secondary.main"))
     }
 
     private fun checkInit(): Boolean {
