@@ -3,10 +3,13 @@ import { Box, Typography, FormGroup, Button, Stack } from '@mui/material';
 import axios from '../../../api/api';
 
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField';
+import { useNavigate } from 'react-router';
 
 const AuthLogin = ({ title, subtitle, subtext }) => {
+  localStorage.clear();
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   console.log(userId);
   console.log(password);
   return (
@@ -21,10 +24,19 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          axios.post('/auth/sign-in', {
-            userId: userId,
-            password: password,
-          });
+          axios
+            .post('/auth/sign-in', {
+              userId: userId,
+              password: password,
+            })
+            .then((result) => {
+              if (result.data.token != null) {
+                localStorage.setItem('token', result.data.token);
+                navigate('/');
+              } else {
+                alert('계정 혹은 비밀번호를 확인해주세요.');
+              }
+            });
         }}
       >
         <Stack>

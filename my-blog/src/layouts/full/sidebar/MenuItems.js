@@ -7,10 +7,11 @@ import {
   IconTypography,
   IconUserPlus,
 } from '@tabler/icons';
+import { useEffect } from 'react';
 
 import { uniqueId } from 'lodash';
 
-const Menuitems = [
+let Menuitems = [
   {
     navlabel: true,
     subheader: 'Home',
@@ -47,12 +48,21 @@ const Menuitems = [
     title: '로그인',
     icon: IconLogin,
     href: '/auth/login',
+    login: false,
   },
   {
     id: uniqueId(),
     title: '회원가입',
     icon: IconUserPlus,
     href: '/auth/register',
+    login: false,
+  },
+  {
+    id: uniqueId(),
+    title: '로그아웃',
+    icon: IconUserPlus,
+    href: '/auth/login',
+    login: true,
   },
   {
     navlabel: true,

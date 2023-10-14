@@ -39,7 +39,7 @@ const Blog = () => {
           <Grid item sm={12} md={4} lg={3} key={index}>
             <BlankCard>
               <Typography>
-                <img src={product.photo} alt="img" width="100%" height="120px" />
+                <img src={product.photo} alt="img" width="100%" height="110px" />
               </Typography>
               <CardContent sx={{ p: 3, pt: 2 }}>
                 <Typography variant="h6">{product.title}</Typography>

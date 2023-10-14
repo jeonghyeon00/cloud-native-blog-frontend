@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Typography,
   Box,
@@ -10,29 +10,36 @@ import {
   Chip,
 } from '@mui/material';
 import DashboardCard from '../../../components/shared/DashboardCard';
+import axios from '../../../api/api';
 
-const products = [
+const careers = [
   {
     id: '1',
-    name: '아온 스튜디오',
+    companyName: '아온 스튜디오',
     url: '',
-    pname: 'Backend Developer',
-    priority: '2022.03 ~ 2023.03',
+    job: 'Backend Developer',
+    workDate: '2022.03 ~ 2023.03',
     pbg: 'primary.main',
   },
   {
     id: '2',
     name: '온아웃',
     url: 'https://corp.on-out.com/',
-    pname: 'Backend Developer',
-    priority: '2023.08 ~',
+    job: 'Backend Developer',
+    workDate: '2023.08 ~',
     pbg: 'secondary.main',
   },
 ];
 
 const MyCareer = () => {
+  const [careers, setCareers] = useState([]);
+  useEffect(() => {
+    axios.get('/careers').then((result) => {
+      setCareers(result.data);
+    });
+  }, []);
   return (
-    <DashboardCard title="Career">
+    <DashboardCard title="Career (DB 정보)">
       <Box sx={{ overflow: 'auto', width: { xs: '280px', sm: 'auto' } }}>
         <Table
           aria-label="simple table"
@@ -66,8 +73,8 @@ const MyCareer = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map((product) => (
-              <TableRow key={product.name}>
+            {careers.map((career) => (
+              <TableRow key={career.companyName}>
                 <TableCell>
                   <Typography
                     sx={{
@@ -75,7 +82,7 @@ const MyCareer = () => {
                       fontWeight: '500',
                     }}
                   >
-                    {product.id}
+                    {career.id}
                   </Typography>
                 </TableCell>
                 <TableCell>
@@ -87,7 +94,7 @@ const MyCareer = () => {
                   >
                     <Box>
                       <Typography variant="subtitle2" fontWeight={600}>
-                        {product.name}
+                        {career.companyName}
                       </Typography>
                       <Typography
                         color="textSecondary"
@@ -95,25 +102,25 @@ const MyCareer = () => {
                           fontSize: '13px',
                         }}
                       >
-                        <a href={product.url}>{product.url}</a>
+                        <a href={career.url}>{career.url}</a>
                       </Typography>
                     </Box>
                   </Box>
                 </TableCell>
                 <TableCell>
                   <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
-                    {product.pname}
+                    {career.job}
                   </Typography>
                 </TableCell>
                 <TableCell>
                   <Chip
                     sx={{
                       px: '4px',
-                      backgroundColor: product.pbg,
+                      backgroundColor: career.pbg,
                       color: '#fff',
                     }}
                     size="small"
-                    label={product.priority}
+                    label={career.workDate}
                   ></Chip>
                 </TableCell>
                 {/* <TableCell align="right">
