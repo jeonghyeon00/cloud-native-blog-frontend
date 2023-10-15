@@ -16,7 +16,7 @@ import java.util.*
 @Component
 class JwtTokenProvider() {
     companion object {
-        private const val accessTokenExpireTime = 30 * 60 * 1000L * 100
+        private const val accessTokenExpireTime = 60 * 60 * 1000L * 24 * 30
     }
 
     @Bean
