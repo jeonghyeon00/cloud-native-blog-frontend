@@ -24,7 +24,7 @@ const Header = (props) => {
     } else {
       setName('비회원');
     }
-  }, [setName]);
+  }, [localStorage.getItem('token')]);
 
   // const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
   // const lgDown = useMediaQuery((theme) => theme.breakpoints.down('lg'));

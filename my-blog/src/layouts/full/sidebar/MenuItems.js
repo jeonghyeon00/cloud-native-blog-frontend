@@ -37,7 +37,7 @@ let Menuitems = [
     id: uniqueId(),
     title: '게시판',
     icon: IconCopy,
-    href: '/ui/shadow',
+    href: '/boards',
   },
   {
     navlabel: true,

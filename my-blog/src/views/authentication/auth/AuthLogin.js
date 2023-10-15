@@ -4,6 +4,7 @@ import axios from '../../../api/api';
 
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const AuthLogin = ({ title, subtitle, subtext }) => {
   localStorage.clear();
@@ -14,6 +15,9 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
   console.log(password);
   return (
     <>
+      <Button variant="outlined" color="primary" fullWidth component={Link} to={'/'}>
+        홈으로
+      </Button>
       {title ? (
         <Typography fontWeight="700" variant="h2" mb={1}>
           {title}

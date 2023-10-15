@@ -11,7 +11,9 @@ const Information = Loadable(lazy(() => import('../views/dashboard/Information')
 const SamplePage = Loadable(lazy(() => import('../views/sample-page/SamplePage')));
 const Icons = Loadable(lazy(() => import('../views/icons/Icons')));
 const TypographyPage = Loadable(lazy(() => import('../views/utilities/TypographyPage')));
-const Shadow = Loadable(lazy(() => import('../views/utilities/Shadow')));
+const Board = Loadable(lazy(() => import('../views/utilities/Board')));
+const BoardByOne = Loadable(lazy(() => import('../views/utilities/BoardByOne')));
+const BoardsWrite = Loadable(lazy(() => import('../views/utilities/BoardsWrite')));
 const Error = Loadable(lazy(() => import('../views/authentication/Error')));
 const Register = Loadable(lazy(() => import('../views/authentication/Register')));
 const Login = Loadable(lazy(() => import('../views/authentication/Login')));
@@ -26,7 +28,9 @@ const Router = [
       { path: '/sample-page', exact: true, element: <SamplePage /> },
       { path: '/icons', exact: true, element: <Icons /> },
       { path: '/ui/typography', exact: true, element: <TypographyPage /> },
-      { path: '/ui/shadow', exact: true, element: <Shadow /> },
+      { path: '/boards', exact: true, element: <Board /> },
+      { path: '/boards/write', exact: true, element: <BoardsWrite /> },
+      { path: '/boards/*', exact: true, element: <BoardByOne /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],
   },

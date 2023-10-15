@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Avatar,
   Box,
@@ -16,12 +16,18 @@ import { IconListCheck, IconMail, IconUser } from '@tabler/icons';
 import ProfileImg from 'src/assets/images/profile/user-1.jpg';
 
 const Profile = () => {
+  const navigate = useNavigate();
   const [anchorEl2, setAnchorEl2] = useState(null);
   const handleClick2 = (event) => {
     setAnchorEl2(event.currentTarget);
   };
   const handleClose2 = () => {
     setAnchorEl2(null);
+  };
+
+  const logOut = () => {
+    localStorage.clear();
+    navigate('/');
   };
 
   return (
@@ -66,7 +72,7 @@ const Profile = () => {
         }}
       >
         <Box mt={1} py={1} px={2}>
-          <Button to="/auth/login" variant="outlined" color="primary" component={Link} fullWidth>
+          <Button onClick={logOut} variant="outlined" color="primary" fullWidth>
             Logout
           </Button>
         </Box>

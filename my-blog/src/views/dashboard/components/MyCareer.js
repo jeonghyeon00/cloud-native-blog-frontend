@@ -12,25 +12,6 @@ import {
 import DashboardCard from '../../../components/shared/DashboardCard';
 import axios from '../../../api/api';
 
-const careers = [
-  {
-    id: '1',
-    companyName: '아온 스튜디오',
-    url: '',
-    job: 'Backend Developer',
-    workDate: '2022.03 ~ 2023.03',
-    pbg: 'primary.main',
-  },
-  {
-    id: '2',
-    name: '온아웃',
-    url: 'https://corp.on-out.com/',
-    job: 'Backend Developer',
-    workDate: '2023.08 ~',
-    pbg: 'secondary.main',
-  },
-];
-
 const MyCareer = () => {
   const [careers, setCareers] = useState([]);
   useEffect(() => {
