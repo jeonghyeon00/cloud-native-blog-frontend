@@ -21,8 +21,6 @@ services:
     depends_on:
       - mysql-container
     image: toolkithi/my-spring:latest
-    ports:
-      - 8080:8080
     restart: always
     environment:
       DB_USERNAME: jeonghyeon
@@ -39,8 +37,6 @@ services:
     depends_on:
       - mysql-container
     image: toolkithi/my-spring:latest
-    ports:
-      - 8081:8081
     restart: always
     environment:
       DB_USERNAME: jeonghyeon

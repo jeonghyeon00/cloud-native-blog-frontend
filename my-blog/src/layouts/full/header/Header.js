@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Box, AppBar, Toolbar, styled, Stack, IconButton, Badge, Button } from '@mui/material';
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  styled,
+  Stack,
+  IconButton,
+  Badge,
+  Button,
+  Typography,
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import axios from '../../../api/api';
 
@@ -47,7 +57,9 @@ const Header = (props) => {
     <AppBarStyled position="sticky" color="default">
       <ToolbarStyled>
         <Box flexGrow={1} />
-        안녕하세요 <b>{` ${name}`}</b> 님
+        <Typography variant="subtitle1" color="textSecondary">
+          안녕하세요 {'  '} <b>{name}</b> 님
+        </Typography>
         <Stack spacing={1} direction="row" alignItems="center">
           <Profile />
         </Stack>

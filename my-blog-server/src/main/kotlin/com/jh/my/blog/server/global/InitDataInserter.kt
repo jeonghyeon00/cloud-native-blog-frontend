@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDate
 import java.time.LocalDateTime
+import org.springframework.beans.factory.annotation.Value
 
 @Component
 class InitDataInserter(
@@ -30,9 +31,15 @@ class InitDataInserter(
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
+    @Value("\${server_number}")
+    lateinit var serverNumber: String
+
     @EventListener(ApplicationReadyEvent::class)
     @Transactional
     fun putDummyData() {
+        if(serverNumber == "2"){
+            return
+        }
         if (checkInit()) {
             return
         }

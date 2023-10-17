@@ -4,17 +4,31 @@ import { Box, Button, Input, Typography } from '@mui/material';
 import DashboardCard from '../../components/shared/DashboardCard';
 import axios from '../../api/api';
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
-const BoardsWrite = () => {
+const BoardUpdate = () => {
+  const location = useLocation();
+
+  const [load, setLoad] = useState(true);
+  useEffect(() => {
+    const result = () => {
+      axios.get(`/boards/${location.pathname.split('/')[3]}`).then((result) => {
+        setTitle(result.data.title);
+        setContent(result.data.content);
+      });
+    };
+    result();
+  }, [load === true]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
   const navigate = useNavigate();
-  const postBoard = async () => {
-    const result = await axios.post(
-      '/boards',
+  const updateBoard = async () => {
+    const boardId = location.pathname.split('/')[3];
+    console.log(boardId);
+    const result = await axios.patch(
+      `/boards/${boardId}`,
       {
         title: title,
         content: content,
@@ -26,10 +40,10 @@ const BoardsWrite = () => {
       },
     );
 
-    if (result.status === 201) {
-      navigate(`/boards/${result.data}`);
+    if (result.data === true) {
+      navigate(`/boards`);
     } else {
-      alert('재 로그인');
+      alert('작성자가 아닙니다.');
     }
   };
   const textFieldStyle = {
@@ -37,10 +51,10 @@ const BoardsWrite = () => {
   };
   return (
     <DashboardCard title="게시판">
-      <Button color="primary" variant="contained" disableElevation onClick={postBoard}>
-        작성 왼료
+      <Button color="primary" variant="contained" disableElevation onClick={updateBoard}>
+        수정하기 왼료
       </Button>
-      <Button color="primary" variant="contained" disableElevation to="/boards" component={Link}>
+      <Button color="primary" variant="contained" disableElevation component={Link} to={'/boards'}>
         뒤로 가기
       </Button>
       <Box>
@@ -58,6 +72,7 @@ const BoardsWrite = () => {
           onChange={(e) => {
             setTitle(e.target.value);
           }}
+          value={title}
         ></CustomTextField>
       </Box>
       <Box>
@@ -77,10 +92,11 @@ const BoardsWrite = () => {
           onChange={(e) => {
             setContent(e.target.value);
           }}
+          value={content}
         ></CustomTextField>
       </Box>
     </DashboardCard>
   );
 };
 
-export default BoardsWrite;
+export default BoardUpdate;

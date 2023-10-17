@@ -5,8 +5,8 @@ import java.time.LocalDateTime
 
 @Entity
 class Board(
-    val title: String,
-    val content: String,
+    var title: String,
+    var content: String,
     val createdAt: LocalDateTime = LocalDateTime.now(),
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

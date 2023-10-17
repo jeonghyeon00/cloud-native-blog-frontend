@@ -14,6 +14,7 @@ const TypographyPage = Loadable(lazy(() => import('../views/utilities/Typography
 const Board = Loadable(lazy(() => import('../views/utilities/Board')));
 const BoardByOne = Loadable(lazy(() => import('../views/utilities/BoardByOne')));
 const BoardsWrite = Loadable(lazy(() => import('../views/utilities/BoardsWrite')));
+const BoardUpdate = Loadable(lazy(() => import('../views/utilities/BoardUpdate')));
 const Error = Loadable(lazy(() => import('../views/authentication/Error')));
 const Register = Loadable(lazy(() => import('../views/authentication/Register')));
 const Login = Loadable(lazy(() => import('../views/authentication/Login')));
@@ -30,6 +31,7 @@ const Router = [
       { path: '/ui/typography', exact: true, element: <TypographyPage /> },
       { path: '/boards', exact: true, element: <Board /> },
       { path: '/boards/write', exact: true, element: <BoardsWrite /> },
+      { path: '/boards/update/*', exact: true, element: <BoardUpdate /> },
       { path: '/boards/*', exact: true, element: <BoardByOne /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],

@@ -20,7 +20,12 @@ const BoardByOne = () => {
   const [board, setBoard] = useState({});
   const url = useLocation();
   const navigate = useNavigate();
-  console.log(url);
+  const update = () => {
+    const split = url.pathname.split('/');
+    console.log(split);
+    navigate(`/${split[1]}/update/${split[2]}`);
+  };
+
   useEffect(() => {
     async function getResult() {
       const result = await axios.get(url.pathname);
@@ -46,6 +51,9 @@ const BoardByOne = () => {
     <PageContainer title="Sample Page" description="this is Sample page">
       <Button color="primary" variant="contained" component={Link} to="/boards" disableElevation>
         게시판 목록으로 돌아가기
+      </Button>
+      <Button color="primary" variant="contained" onClick={update} disableElevation>
+        수정하기
       </Button>
       <Button color="primary" variant="contained" disableElevation onClick={deleteBoard}>
         삭제하기
