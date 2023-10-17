@@ -3,7 +3,7 @@ import DashboardCard from '../../../components/shared/DashboardCard';
 import axios from '../../../api/api';
 
 const ServerNumber = () => {
-  const [data, setData] = React.useState('1');
+  const [data, setData] = React.useState({serverNumber:"1"});
   useEffect(() => {
     async function getData() {
       const result = await axios.get('/server');
