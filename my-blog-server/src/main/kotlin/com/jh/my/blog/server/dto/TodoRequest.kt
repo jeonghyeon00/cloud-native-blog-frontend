@@ -1,6 +1,6 @@
 package com.jh.my.blog.server.dto
 
-class TodoDto(
+class TodoRequest(
     val isChecked: Boolean = false,
     val description: String,
 )

@@ -1,14 +1,9 @@
 package com.jh.my.blog.server.global
 
-import com.jh.my.blog.server.entity.Board
-import com.jh.my.blog.server.entity.Career
-import com.jh.my.blog.server.entity.Information
-import com.jh.my.blog.server.entity.User
-import com.jh.my.blog.server.repository.BoardRepository
-import com.jh.my.blog.server.repository.CareerRepository
-import com.jh.my.blog.server.repository.InformationRepository
-import com.jh.my.blog.server.repository.UserRepository
+import com.jh.my.blog.server.entity.*
+import com.jh.my.blog.server.repository.*
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 import org.springframework.jdbc.core.JdbcTemplate
@@ -17,7 +12,6 @@ import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDate
 import java.time.LocalDateTime
-import org.springframework.beans.factory.annotation.Value
 
 @Component
 class InitDataInserter(
@@ -27,6 +21,7 @@ class InitDataInserter(
     private val boardRepository: BoardRepository,
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
+    private val todoRepository: TodoRepository,
 ) {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
@@ -37,7 +32,7 @@ class InitDataInserter(
     @EventListener(ApplicationReadyEvent::class)
     @Transactional
     fun putDummyData() {
-        if(serverNumber == "2"){
+        if (serverNumber == "2") {
             return
         }
         if (checkInit()) {
@@ -70,6 +65,8 @@ class InitDataInserter(
         )
         boardRepository.saveAndFlush(Board("테스트 게시물 1", "테스트 게시물 1의 내용입니다.", LocalDateTime.now(), user))
         boardRepository.saveAndFlush(Board("테스트 게시물 2", "테스트 게시물 2의 내용입니다.", LocalDateTime.now(), user))
+        todoRepository.saveAndFlush(Todo("테스트1", false, user, LocalDateTime.now()))
+        todoRepository.saveAndFlush(Todo("테스트2", true, user, LocalDateTime.now()))
     }
 
     private fun checkInit(): Boolean {
