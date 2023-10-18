@@ -50,7 +50,7 @@ const Todo = () => {
         Authorization: localStorage.getItem('token'),
       },
     });
-    navigate('/todo');
+    window.location.replace('/todo');
   };
 
   const toWrite = () => {
