@@ -18,6 +18,7 @@ const BoardUpdate = Loadable(lazy(() => import('../views/utilities/BoardUpdate')
 const Error = Loadable(lazy(() => import('../views/authentication/Error')));
 const Register = Loadable(lazy(() => import('../views/authentication/Register')));
 const Login = Loadable(lazy(() => import('../views/authentication/Login')));
+const Todo = Loadable(lazy(() => import('../views/utilities/Todo')));
 
 const Router = [
   {
@@ -33,6 +34,7 @@ const Router = [
       { path: '/boards/write', exact: true, element: <BoardsWrite /> },
       { path: '/boards/update/*', exact: true, element: <BoardUpdate /> },
       { path: '/boards/*', exact: true, element: <BoardByOne /> },
+      { path: '/todo', exact: true, element: <Todo /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],
   },

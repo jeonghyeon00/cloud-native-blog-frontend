@@ -40,6 +40,12 @@ let Menuitems = [
     href: '/boards',
   },
   {
+    id: uniqueId(),
+    title: 'Todo 리스트',
+    icon: IconCopy,
+    href: '/todo',
+  },
+  {
     navlabel: true,
     subheader: 'Auth',
   },
