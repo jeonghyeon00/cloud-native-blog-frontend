@@ -10,7 +10,7 @@ Automated Docker Image build and push by bash scripts.
 - Board CRUD
 - Authorization with JWT Token
 - About Me Page
-- Stocks
+- OpenAPI Stocks Information
 - TodoList
 
 ## Setup
