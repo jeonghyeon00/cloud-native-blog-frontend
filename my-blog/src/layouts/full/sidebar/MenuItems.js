@@ -1,4 +1,5 @@
 import {
+  Icon24Hours,
   IconAperture,
   IconCopy,
   IconLayoutDashboard,
@@ -29,8 +30,8 @@ let Menuitems = [
   },
   {
     id: uniqueId(),
-    title: 'Typography',
-    icon: IconTypography,
+    title: '주식 정보',
+    icon: Icon24Hours,
     href: '/ui/typography',
   },
   {
