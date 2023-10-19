@@ -13,7 +13,7 @@ class StockController(
     private val stockService: StockService,
 ) {
     @GetMapping("")
-    fun getStocks(@RequestParam(name = "text")text: String): StockResponse {
+    fun getStocks(@RequestParam(name = "text", required = false) text: String?): StockResponse {
         return stockService.getStocks(text)
     }
 }

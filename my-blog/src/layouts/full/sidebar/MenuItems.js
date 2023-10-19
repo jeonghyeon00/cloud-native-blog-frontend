@@ -32,7 +32,7 @@ let Menuitems = [
     id: uniqueId(),
     title: '주식 정보',
     icon: Icon24Hours,
-    href: '/ui/typography',
+    href: '/stocks',
   },
   {
     id: uniqueId(),

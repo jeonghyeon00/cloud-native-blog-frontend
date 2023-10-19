@@ -10,7 +10,7 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 const Information = Loadable(lazy(() => import('../views/dashboard/Information')));
 const SamplePage = Loadable(lazy(() => import('../views/sample-page/SamplePage')));
 const Icons = Loadable(lazy(() => import('../views/icons/Icons')));
-const TypographyPage = Loadable(lazy(() => import('../views/utilities/TypographyPage')));
+const Stocks = Loadable(lazy(() => import('../views/utilities/Stocks')));
 const Board = Loadable(lazy(() => import('../views/utilities/Board')));
 const BoardByOne = Loadable(lazy(() => import('../views/utilities/BoardByOne')));
 const BoardsWrite = Loadable(lazy(() => import('../views/utilities/BoardsWrite')));
@@ -30,7 +30,7 @@ const Router = [
       { path: '/information', exact: true, element: <Information /> },
       { path: '/sample-page', exact: true, element: <SamplePage /> },
       { path: '/icons', exact: true, element: <Icons /> },
-      { path: '/ui/typography', exact: true, element: <TypographyPage /> },
+      { path: '/stocks', exact: true, element: <Stocks /> },
       { path: '/boards', exact: true, element: <Board /> },
       { path: '/boards/write', exact: true, element: <BoardsWrite /> },
       { path: '/boards/update/*', exact: true, element: <BoardUpdate /> },

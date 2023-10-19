@@ -19,7 +19,6 @@ class StockService(
         if (!text.isNullOrEmpty()) {
             url += "&likeItmsNm="
             url += URLEncoder.encode(text)
-            println(url)
         }
         val restTemplate = RestTemplate()
         val entity: HttpEntity<String> = HttpEntity(HttpHeaders())
