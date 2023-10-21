@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import {
   Typography,
   Box,
@@ -8,9 +7,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Chip,
   Button,
-  Checkbox,
 } from '@mui/material';
 import DashboardCard from '../../components/shared/DashboardCard';
 import axios from '../../api/api';
@@ -37,7 +34,7 @@ const Stocks = () => {
   }, [searchText]);
 
   return (
-    <DashboardCard title="주식">
+    <DashboardCard title="주식 (공공 데이터 API, 로딩시간이 많이 깁니다.)">
       검색어
       <CustomTextField
         onChange={(e) => {

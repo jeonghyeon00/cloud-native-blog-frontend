@@ -5,7 +5,7 @@
 
 ---
 
-server Dockerfile
+server [Dockerfile](../my-blog-server/Dockerfile)
 ```dockerfile
 FROM openjdk:19
 ARG JAR_FILE=/build/libs/*.jar
@@ -14,7 +14,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 EXPOSE 8080-8081
 ```
 
-nginx Dockerfile
+nginx [Dockerfile](../nginx/Dockerfile)
 ```dockerfile
 FROM nginx:latest
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -26,7 +26,7 @@ EXPOSE 80
 
 ---
 
-docker_all.sh
+[docker_all.sh](../scripts/docker_all.sh)
 ```shell
 #!/bin/bash
 docker-compose down || exit 1
@@ -38,7 +38,7 @@ docker-compose down || exit 1
 docker-compose up -d || exit 1
 ```
 
-server.sh
+[server.sh](../scripts/server.sh)
 ```shell
 #!/bin/bash
 
@@ -48,7 +48,7 @@ docker build -t toolkithi/my-spring:latest . || exit 1
 docker push toolkithi/my-spring:latest || exit 1
 ```
 
-client.sh
+[client.sh](../scripts/client.sh)
 ```shell
 #!/bin/bash
 
@@ -58,7 +58,7 @@ rm -rf ../nginx/build || exit 1
 cp -r ./build ../nginx/build || exit 1
 ```
 
-nginx.sh
+[nginx.sh](../scripts/nginx.sh)
 ```shell
 #!/bin/bash
 

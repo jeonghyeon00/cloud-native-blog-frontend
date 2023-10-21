@@ -5,7 +5,9 @@
 index.html & assets serving   
 load balancing & reverse proxy
 
-nginx.conf
+![nginx](../images/nginx.png)
+
+[nginx.conf](../nginx/nginx.conf)
 ```nginx.conf
 user  nginx;
 worker_processes  1;
@@ -48,7 +50,7 @@ http {
     include /etc/nginx/conf.d/*.conf;           
 }
 ```
-Dockerfile
+[Dockerfile](../nginx/Dockerfile)
 ```dockerfile
     FROM nginx:latest
     COPY nginx.conf /etc/nginx/nginx.conf
@@ -57,7 +59,7 @@ Dockerfile
     EXPOSE 80
 ```
 
-nginx.sh
+[nginx.sh](../scripts/nginx.sh)
 ```
 #!/bin/bash
 
