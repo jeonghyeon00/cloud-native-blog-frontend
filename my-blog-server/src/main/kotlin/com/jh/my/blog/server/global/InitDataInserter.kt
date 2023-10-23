@@ -58,7 +58,7 @@ class InitDataInserter(
             Career(
                 "온아웃",
                 "Backend Developer",
-                "2022.03 ~ 2023.03",
+                "2023.08 ~",
                 "https://corp.on-out.com/",
                 "secondary.main",
             ),
