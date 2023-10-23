@@ -1,14 +1,4 @@
-import {
-  Icon24Hours,
-  IconAperture,
-  IconCopy,
-  IconLayoutDashboard,
-  IconLogin,
-  IconMoodHappy,
-  IconTypography,
-  IconUserPlus,
-} from '@tabler/icons';
-import { useEffect } from 'react';
+import { Icon24Hours, IconCopy, IconLayoutDashboard, IconLogin, IconUserPlus } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
 
@@ -70,22 +60,6 @@ let Menuitems = [
     icon: IconUserPlus,
     href: '/auth/login',
     login: true,
-  },
-  {
-    navlabel: true,
-    subheader: 'Extra',
-  },
-  {
-    id: uniqueId(),
-    title: 'Icons',
-    icon: IconMoodHappy,
-    href: '/icons',
-  },
-  {
-    id: uniqueId(),
-    title: 'Sample Page',
-    icon: IconAperture,
-    href: '/sample-page',
   },
 ];
 
