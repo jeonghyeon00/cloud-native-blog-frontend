@@ -1,3 +1,4 @@
+import { FoodBank } from '@mui/icons-material';
 import { Icon24Hours, IconCopy, IconLayoutDashboard, IconLogin, IconUserPlus } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
@@ -35,6 +36,12 @@ let Menuitems = [
     title: 'Todo 리스트',
     icon: IconCopy,
     href: '/todo',
+  },
+  {
+    id: uniqueId(),
+    title: '학교 근처 맛집 추천',
+    icon: FoodBank,
+    href: '/map',
   },
   {
     navlabel: true,

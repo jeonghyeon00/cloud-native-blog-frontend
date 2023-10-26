@@ -20,6 +20,7 @@ const Todo = () => {
   const [todos, setTodos] = useState([]);
   async function getResult() {
     if (localStorage.getItem('token') == null) {
+      alert('로그인해주세요.');
       navigate('/');
     }
     const result = await axios.get('/todo', {

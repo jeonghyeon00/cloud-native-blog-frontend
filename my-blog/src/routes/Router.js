@@ -19,6 +19,7 @@ const Register = Loadable(lazy(() => import('../views/authentication/Register'))
 const Login = Loadable(lazy(() => import('../views/authentication/Login')));
 const Todo = Loadable(lazy(() => import('../views/utilities/Todo')));
 const TodoWrite = Loadable(lazy(() => import('../views/utilities/TodoWrite')));
+const FoodRecommend = Loadable(lazy(() => import('../views/FoodRecommend')));
 
 const Router = [
   {
@@ -29,6 +30,7 @@ const Router = [
       { path: '/information', exact: true, element: <Information /> },
 
       { path: '/stocks', exact: true, element: <Stocks /> },
+      { path: '/map', exact: true, element: <FoodRecommend /> },
       { path: '/boards', exact: true, element: <Board /> },
       { path: '/boards/write', exact: true, element: <BoardsWrite /> },
       { path: '/boards/update/*', exact: true, element: <BoardUpdate /> },
