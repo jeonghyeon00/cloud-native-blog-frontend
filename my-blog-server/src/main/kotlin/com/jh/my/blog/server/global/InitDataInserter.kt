@@ -1,5 +1,6 @@
 package com.jh.my.blog.server.global
 
+import com.jh.my.blog.server.constant.FoodCategory
 import com.jh.my.blog.server.entity.*
 import com.jh.my.blog.server.repository.*
 import org.slf4j.LoggerFactory
@@ -22,6 +23,7 @@ class InitDataInserter(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
     private val todoRepository: TodoRepository,
+    private val restaurantRepository: RestaurantRepository,
 ) {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
@@ -67,6 +69,14 @@ class InitDataInserter(
         boardRepository.saveAndFlush(Board("테스트 게시물 2", "테스트 게시물 2의 내용입니다.", LocalDateTime.now(), user))
         todoRepository.saveAndFlush(Todo("테스트1", false, user, LocalDateTime.now()))
         todoRepository.saveAndFlush(Todo("테스트2", true, user, LocalDateTime.now()))
+        val locations = listOf(
+            Restaurant("라쿵푸마라탕", 37.4477931214038, 127.127457380749, FoodCategory.CHINESE),
+            Restaurant("육연차", 37.4488403598708, 127.127131534265, FoodCategory.JAPANESE),
+            Restaurant("준호네 부대찌개", 37.4483605061686, 127.1271073288, FoodCategory.KOREAN),
+            Restaurant("화리화리", 37.4469148573937, 127.127332936337, FoodCategory.KOREAN),
+            Restaurant("화로상회", 37.4535906209516, 127.127270676682, FoodCategory.KOREAN),
+        )
+        restaurantRepository.saveAllAndFlush(locations)
     }
 
     private fun checkInit(): Boolean {
