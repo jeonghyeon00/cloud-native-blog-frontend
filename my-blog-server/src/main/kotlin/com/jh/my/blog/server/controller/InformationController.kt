@@ -1,6 +1,7 @@
 package com.jh.my.blog.server.controller
 
 import com.jh.my.blog.server.dto.InformationDto
+import com.jh.my.blog.server.dto.RestaurantDto
 import com.jh.my.blog.server.entity.Career
 import com.jh.my.blog.server.jwt.JwtTokenProvider
 import com.jh.my.blog.server.service.InformationService
@@ -37,7 +38,14 @@ class InformationController(
     }
 
     @GetMapping("/careers")
-    fun getCareers(): MutableList<Career> {
+    fun getCareers(): List<Career> {
         return informationService.getCareers()
+    }
+
+    @GetMapping("/restaurants")
+    fun getRestaurants(): List<RestaurantDto> {
+        return informationService.getRestaurants().map {
+            RestaurantDto(it.name, it.lat, it.lng, it.category.krString, it.id)
+        }
     }
 }

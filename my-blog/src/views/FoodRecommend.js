@@ -9,35 +9,19 @@ import {
   TableCell,
   TableBody,
 } from '@mui/material';
+import {useEffect, useState} from "react";
+import axios from '../api/api'
 
 function FoodRecommend() {
-  const locations = [
-    {
-      name: '라쿵푸마라탕',
-      latlng: { lat: 37.4477931214038, lng: 127.127457380749 },
-      category: '중식',
-    },
-    {
-      name: '육연차',
-      latlng: { lat: 37.4488403598708, lng: 127.127131534265 },
-      category: '일식',
-    },
-    {
-      name: '준호네 부대찌개',
-      latlng: { lat: 37.4483605061686, lng: 127.1271073288 },
-      category: '한식',
-    },
-    {
-      name: '화리화리',
-      latlng: { lat: 37.4469148573937, lng: 127.127332936337 },
-      category: '한식',
-    },
-    {
-      name: '화로상회',
-      latlng: { lat: 37.4535906209516, lng: 127.127270676682 },
-      category: '한식',
-    },
-  ];
+  const [locations, setLocations] = useState([])
+
+  useEffect(()=>{
+    axios.get("/restaurants").then(
+        (result)=>{
+          setLocations(result.data)
+        }
+    )
+  },[])
 
   return (
     <>
@@ -48,18 +32,18 @@ function FoodRecommend() {
             style={{ width: '100%', height: '100%' }}
             level={3}
           >
-            {locations.map((loc, idx) => (
+            {locations && locations.map((loc, idx) => (
               <>
                 <MapMarker
-                  key={`${loc.name}-${loc.latlng.lat}-${loc.latlng.lng}`}
-                  position={loc.latlng}
+                  key={`${loc.name}-${loc.lat}-${loc.lng}`}
+                  position={{lat: loc.lat, lng: loc.lng}}
                   image={{
                     src: 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png',
                     size: { width: 24, height: 35 },
                   }}
                   title={loc.name}
                 />
-                <CustomOverlayMap position={loc.latlng}>
+                <CustomOverlayMap position={{lat: loc.lat, lng: loc.lng}}>
                   <div
                     style={{
                       color: 'black',
