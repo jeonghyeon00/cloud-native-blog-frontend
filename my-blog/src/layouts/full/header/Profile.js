@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Avatar,
   Box,
   Menu,
   Button,
   IconButton,
-  MenuItem,
-  ListItemIcon,
-  ListItemText,
+
 } from '@mui/material';
 
-import { IconListCheck, IconMail, IconUser } from '@tabler/icons';
+
 
 import ProfileImg from 'src/assets/images/profile/user-1.jpg';
 
-const Profile = () => {
+const Profile = (props) => {
   const navigate = useNavigate();
   const [anchorEl2, setAnchorEl2] = useState(null);
   const handleClick2 = (event) => {
@@ -25,10 +23,12 @@ const Profile = () => {
     setAnchorEl2(null);
   };
 
-  const logOut = () => {
-    localStorage.clear();
-    navigate('/');
-  };
+
+
+  const login = () =>{
+      localStorage.clear();
+      navigate('/auth/login');
+  }
 
   return (
     <Box>
@@ -72,9 +72,12 @@ const Profile = () => {
         }}
       >
         <Box mt={1} py={1} px={2}>
-          <Button onClick={logOut} variant="outlined" color="primary" fullWidth>
-            Logout
-          </Button>
+            {localStorage.getItem("token") ? <Button onClick={props.logOut} variant="outlined" color="primary" fullWidth>
+                Logout
+            </Button>:<Button onClick={login} variant="outlined" color="primary" fullWidth>
+                Login
+            </Button> }
+
         </Box>
       </Menu>
     </Box>

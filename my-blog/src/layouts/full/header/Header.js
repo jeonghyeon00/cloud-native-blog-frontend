@@ -5,9 +5,7 @@ import {
   Toolbar,
   styled,
   Stack,
-  IconButton,
-  Badge,
-  Button,
+
   Typography,
 } from '@mui/material';
 import PropTypes from 'prop-types';
@@ -15,9 +13,16 @@ import axios from '../../../api/api';
 
 // components
 import Profile from './Profile';
+import {useNavigate} from "react-router";
 
 const Header = (props) => {
   let [name, setName] = useState('비회원');
+  const navigate = useNavigate()
+  const logOut = () => {
+    localStorage.clear();
+    setName("비회원")
+    navigate('/');
+  };
   useEffect(() => {
     if (localStorage.getItem('token') != null) {
       axios
@@ -34,10 +39,8 @@ const Header = (props) => {
     } else {
       setName('비회원');
     }
-  }, [localStorage.getItem('token')]);
+  }, []);
 
-  // const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
-  // const lgDown = useMediaQuery((theme) => theme.breakpoints.down('lg'));
 
   const AppBarStyled = styled(AppBar)(({ theme }) => ({
     boxShadow: 'none',
@@ -61,7 +64,7 @@ const Header = (props) => {
           안녕하세요 {'  '} <b>{name}</b> 님
         </Typography>
         <Stack spacing={1} direction="row" alignItems="center">
-          <Profile />
+          <Profile logOut={logOut} />
         </Stack>
       </ToolbarStyled>
     </AppBarStyled>

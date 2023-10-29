@@ -22,13 +22,14 @@ const Todo = () => {
     if (localStorage.getItem('token') == null) {
       alert('로그인해주세요.');
       navigate('/');
+    }else{
+      const result = await axios.get('/todo', {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      });
+      setTodos(result.data);
     }
-    const result = await axios.get('/todo', {
-      headers: {
-        Authorization: localStorage.getItem('token'),
-      },
-    });
-    setTodos(result.data);
   }
   useEffect(() => {
     getResult();
