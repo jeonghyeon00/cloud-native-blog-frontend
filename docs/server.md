@@ -13,7 +13,8 @@ RestTemplate
 
 Board CRUD  
 TodoList  
-Stocks(Open API)
+Stocks(Open API)  
+Near Restaruants Recommendation
 
 
 ## Init Data Insert

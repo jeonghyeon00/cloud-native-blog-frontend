@@ -12,6 +12,7 @@ Automated Docker Image build and push by bash scripts.
 - About Me Page
 - OpenAPI Stocks Information
 - TodoList
+- Nearby Restaurants Recommendation
 
 ## Setup
 
