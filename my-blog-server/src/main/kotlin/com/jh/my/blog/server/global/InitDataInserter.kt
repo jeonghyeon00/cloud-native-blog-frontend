@@ -34,7 +34,9 @@ class InitDataInserter(
     @EventListener(ApplicationReadyEvent::class)
     @Transactional
     fun putDummyData() {
+        logger.info("serverNumber = $serverNumber ")
         if (serverNumber == "2") {
+            logger.info("serverNumber = $serverNumber skip insert dummy data")
             return
         }
         if (checkInit()) {
