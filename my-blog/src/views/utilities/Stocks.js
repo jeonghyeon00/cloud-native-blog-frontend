@@ -17,19 +17,21 @@ const Stocks = () => {
   const [items, setItems] = useState([]);
   const [searchText, setSearchText] = useState();
   const [searchTextBefore, setSearchTextBefore] = useState();
-  async function getResult() {
-    if (searchText == null) {
-      const result = await axios.get('/stocks', {});
-      setItems(result.data.response.body.items.item);
-    } else {
-      const result = await axios.get(`/stocks?text=${searchText}`, {});
-      setItems(result.data.response.body.items.item);
-    }
-  }
+  const [loading, setLoading] = useState(true)
   const searchOnClick = () => {
     setSearchText(searchTextBefore);
   };
   useEffect(() => {
+    async function getResult() {
+      if (searchText == null) {
+        const result = await axios.get('/stocks', {});
+        setItems(result.data.response.body.items.item);
+      } else {
+        const result = await axios.get(`/stocks?text=${searchText}`, {});
+        setItems(result.data.response.body.items.item);
+      }
+      setLoading(false)
+    }
     getResult();
   }, [searchText]);
 
@@ -72,7 +74,9 @@ const Stocks = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {items.map((item) => (
+            {loading ? "로딩중 입니다." :
+                (
+            items.map((item) => (
               <TableRow key={item.title}>
                 <TableCell>
                   <Typography
@@ -115,12 +119,12 @@ const Stocks = () => {
                   </Typography>
                 </TableCell>
               </TableRow>
-            ))}
+            )))}
           </TableBody>
         </Table>
       </Box>
     </DashboardCard>
-  );
+  )
 };
 
 export default Stocks;
